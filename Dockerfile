@@ -10,6 +10,7 @@ RUN apt-get update && \
     novnc \
     websockify \
     python3 \
+    matchbox-window-manager \
     && rm -rf /var/lib/apt/lists/*
 
 # 2. Setup VNC Password (AKSHAY)
