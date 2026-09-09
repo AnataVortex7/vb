@@ -7,7 +7,7 @@ def start_virtual_browser():
 
     # १. लपलेला डिस्प्ले (VNC Server) पासवर्ड सोबत चालू करणे
     print("➡️ [1/3] VNC Server (Password Protected) चालू करत आहे...")
-    vnc_cmd = "Xvnc :0 -geometry 1024x768 -depth 16 -SecurityTypes VncAuth -PasswordFile /root/.vnc/passwd"
+    vnc_cmd = "Xvnc :0 -geometry 1024x768 -depth 16 -SecurityTypes VncAuth -PasswordFile /root/.vnc/passwd -BlacklistTimeout 0 -BlacklistThreshold 0 -localhost"
     subprocess.Popen(vnc_cmd, shell=True)
     time.sleep(2) # डिस्प्ले तयार होण्यासाठी २ सेकंद थांबणे
 
