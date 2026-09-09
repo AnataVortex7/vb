@@ -1,0 +1,39 @@
+// ==UserScript==
+// @name         Colab Auto Run & Alive
+// @namespace    http://tampermonkey.net/
+// @version      1.0
+// @description  Automatically click Run All and keep Colab alive
+// @match        https://colab.research.google.com/*
+// @grant        none
+// ==/UserScript==
+
+(function() {
+    'use strict';
+
+    // १. पेज उघडल्यावर १५ सेकंदांनी आपोआप 'Run All' करणे
+    setTimeout(() => {
+        let runAllBtn = document.querySelector('colab-menu-item[command="runall"]');
+        if (runAllBtn) {
+            console.log("Run All button clicked!");
+            runAllBtn.click();
+        }
+    }, 15000);
+
+    // २. दर ५ ते ७ मिनिटांनी (Random time) पेजवर क्लिक करत राहणे
+    setInterval(() => {
+        let connectBtn = document.querySelector('colab-connect-button');
+        if (connectBtn) {
+            connectBtn.click();
+            console.log("Keeping alive...");
+        }
+    }, 300000 + Math.random() * 120000);
+
+    // ३. जर गुगलने "Are you still there?" विचारले, तर आपोआप OK करणे
+    setInterval(() => {
+        let okBtn = document.getElementById('ok');
+        if (okBtn) {
+            okBtn.click();
+        }
+    }, 15000);
+
+})();
