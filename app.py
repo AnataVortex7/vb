@@ -22,12 +22,16 @@ def start_virtual_browser():
     print("➡️ [3/4] Chromium ब्राउझर चालू करत आहे...")
     os.environ["DISPLAY"] = ":0"
     chrome_cmd = (
+        "while true; do "
         "chromium --no-sandbox "
+        "--disable-gpu "
         "--disable-dev-shm-usage "
+        "--restore-last-session "
         "--window-position=0,0 "
         "--window-size=1024,768 "
         "--start-maximized "
-        "--user-data-dir=/tmp/chrome_profile"
+        "--user-data-dir=/app/chrome_profile; "
+        "sleep 1; done"
     )
     subprocess.Popen(chrome_cmd, shell=True)
 
