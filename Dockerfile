@@ -28,6 +28,9 @@ RUN echo "<html><body><h1>Uptime OK - Server Active</h1></body></html>" > /app/w
 # 5. Route '/vb' for Browser
 RUN echo "<html><head><meta http-equiv='refresh' content='0; url=vnc.html?autoconnect=true&resize=remote' /></head><body>Loading Browser...</body></html>" > /app/webroot/vb/index.html
 
+# 5.5. Copy Colab Script to webroot so user can access it via URL
+COPY colab_script.txt /app/webroot/colab_script.txt
+
 # 6. Copy App Script
 COPY app.py /app/app.py
 RUN chmod +x /app/app.py
